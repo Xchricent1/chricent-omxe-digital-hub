@@ -90,7 +90,7 @@ const Footer = () => {
               <MapPin className="h-5 w-5 text-accent" />
               <div>
                 <p className="text-sm text-background/70">Location</p>
-                <p className="font-medium">Uganda, East Africa</p>
+                <p className="font-medium">Bundibugyo, Uganda, East Africa</p>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2 text-background/70">
-            <span>© 2024 Bwambale Chricent</span>
+            <span>© 2025 Bwambale Chricent</span>
             <Heart className="h-4 w-4 text-accent" />
             <span>Supported by OMXE</span>
           </div>
