@@ -8,35 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Modern tech-inspired color palette */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 40% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Tech blue primary colors */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 210 40% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Orange accent for highlights */
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 98%;
+    --accent-glow: 25 95% 63%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom gradient variables */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(25 95% 53%), hsl(25 95% 63%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 70%) 50%, hsl(25 95% 53%) 100%);
+    
+    /* Shadow variables */
+    --shadow-primary: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+    --shadow-accent: 0 10px 30px -10px hsl(25 95% 53% / 0.3);
+    --shadow-card: 0 4px 6px -1px hsl(220 13% 91% / 0.1), 0 2px 4px -1px hsl(220 13% 91% / 0.06);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +119,93 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-poppins;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-semibold;
+  }
+}
+
+@layer components {
+  /* Hero button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-primary)] hover:-translate-y-1 hover:scale-105;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent to-accent-glow text-accent-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-[var(--shadow-accent)] hover:-translate-y-0.5;
+  }
+  
+  /* Card variants */
+  .card-modern {
+    @apply bg-card border border-border rounded-xl p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .card-skill {
+    @apply bg-gradient-to-br from-card to-secondary border border-border rounded-lg p-4 transition-all duration-300 hover:shadow-md hover:scale-105;
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    @apply w-full h-2 bg-secondary rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
